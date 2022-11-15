@@ -1,15 +1,15 @@
 package frc.robot.subsystems.flywheel;
 
 import org.littletonrobotics.junction.Logger;
-
 import edu.wpi.first.math.controller.SimpleMotorFeedforward;
 import edu.wpi.first.math.util.Units;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
+import frc.robot.subsystems.flywheel.FlywheelIO.FlywheelIOInputs;
 
 public class Flywheel extends SubsystemBase {
   private final FlywheelIO io;
-  private final FlywheelIOInputsAutoLogged inputs = new FlywheelIOInputsAutoLogged();
+  private final FlywheelIOInputs inputs = new FlywheelIOInputs();
   private final SimpleMotorFeedforward ffModel;
 
   /** Creates a new Flywheel. */
