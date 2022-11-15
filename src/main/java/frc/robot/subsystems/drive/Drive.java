@@ -8,13 +8,12 @@ import edu.wpi.first.math.kinematics.DifferentialDriveOdometry;
 import edu.wpi.first.math.util.Units;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import frc.robot.subsystems.drive.DriveIO.DriveIOInputs;
 
 public class Drive extends SubsystemBase {
   public static final double WHEEL_RADIUS_METERS = Units.inchesToMeters(3.0);
 
   private final DriveIO io;
-  private final DriveIOInputs inputs = new DriveIOInputs();
+  private final DriveIOInputsAutoLogged inputs = new DriveIOInputsAutoLogged();
   private final DifferentialDriveOdometry odometry = new DifferentialDriveOdometry(new Rotation2d());
 
   /** Creates a new Drive. */
