@@ -25,8 +25,8 @@ public class Flywheel extends SubsystemBase {
         io.configurePID(1.0, 0.0, 0.0);
         break;
       case SIM:
-        ffModel = new SimpleMotorFeedforward(0.1, 0.05);
-        io.configurePID(0.5, 0.0, 0.0);
+        ffModel = new SimpleMotorFeedforward(0, 0.03);
+        io.configurePID(0.7, 0.0, 0.0);
         break;
       default:
         ffModel = new SimpleMotorFeedforward(0.0, 0.0);
@@ -47,6 +47,8 @@ public class Flywheel extends SubsystemBase {
 
     // Log flywheel setpoint
     Logger.getInstance().recordOutput("FlywheelSetpointRPM", velocityRPM);
+
+    //Log flywheel rpm
   }
 
   /** Stops the flywheel. */
