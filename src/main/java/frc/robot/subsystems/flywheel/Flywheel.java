@@ -48,7 +48,6 @@ public class Flywheel extends SubsystemBase {
     // Log flywheel setpoint
     Logger.getInstance().recordOutput("FlywheelSetpointRPM", velocityRPM);
 
-    //Log flywheel rpm
   }
 
   /** Stops the flywheel. */

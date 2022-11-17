@@ -24,4 +24,5 @@ public class DriveIOSim implements DriveIO {
   public void setVoltage(double leftVolts, double rightVolts) {
     sim.setInputs(MathUtil.clamp(leftVolts, -12.0, 12.0), MathUtil.clamp(rightVolts, -12.0, 12.0));
   }
+
 }

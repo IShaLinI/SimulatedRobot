@@ -1,5 +1,8 @@
 package frc.robot.commands;
 
+import edu.wpi.first.math.geometry.Pose2d;
+import edu.wpi.first.math.geometry.Rotation2d;
+import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import edu.wpi.first.wpilibj2.command.StartEndCommand;
 import frc.robot.subsystems.drive.Drive;
@@ -17,8 +20,9 @@ public class DriveWithFlywheelAuto extends SequentialCommandGroup {
    */
   public DriveWithFlywheelAuto(Drive drive, Flywheel flywheel) {
     addCommands(
-        // new StartEndCommand(() -> drive.drivePercent(drivePercent, drivePercent), drive::stop, drive)
-        //     .withTimeout(driveDuration),
+        new InstantCommand(() -> drive.resetPose(new Pose2d(2,2, new Rotation2d()), new Rotation2d(30))),
+        new StartEndCommand(() -> drive.drivePercent(drivePercent, drivePercent), drive::stop, drive)
+            .withTimeout(driveDuration),
         new StartEndCommand(() -> flywheel.runVelocity(flywheelSpeed), flywheel::stop, flywheel)
             .withTimeout(flywheelDuration));
   }

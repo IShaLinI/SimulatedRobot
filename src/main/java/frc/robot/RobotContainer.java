@@ -10,6 +10,7 @@ import org.littletonrobotics.junction.networktables.LoggedDashboardNumber;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.commands.DriveWithFlywheelAuto;
+import frc.robot.commands.MotionProfileAuto;
 import frc.robot.commands.SpinAuto;
 import frc.robot.subsystems.drive.Drive;
 import frc.robot.subsystems.drive.DriveIO;
@@ -74,6 +75,7 @@ public class RobotContainer {
     autoChooser.addDefaultOption("Do Nothing", new InstantCommand());
     autoChooser.addOption("Spin", new SpinAuto(drive));
     autoChooser.addOption("Drive With Flywheel", new DriveWithFlywheelAuto(drive, flywheel));
+    autoChooser.addDefaultOption("Motion Profile", new MotionProfileAuto(drive));
 
     // Configure the button bindings
     configureButtonBindings();
