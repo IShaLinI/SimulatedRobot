@@ -5,6 +5,7 @@ import com.revrobotics.CANSparkMax;
 import com.revrobotics.RelativeEncoder;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
+import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.util.Units;
 
 public class DriveIOSparkMax implements DriveIO {
@@ -66,6 +67,12 @@ public class DriveIOSparkMax implements DriveIO {
   public void setVoltage(double leftVolts, double rightVolts) {
     leftLeader.setVoltage(leftVolts);
     rightLeader.setVoltage(rightVolts);
+  }
+
+  @Override
+  public void resetPose(Pose2d pose) {
+      leftEncoder.setPosition(0);
+      leftEncoder.setPosition(0);
   }
 
 }

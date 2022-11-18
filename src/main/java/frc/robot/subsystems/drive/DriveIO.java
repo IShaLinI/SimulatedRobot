@@ -2,6 +2,8 @@ package frc.robot.subsystems.drive;
 
 import org.littletonrobotics.junction.AutoLog;
 
+import edu.wpi.first.math.geometry.Pose2d;
+
 public interface DriveIO {
   @AutoLog
   public static class DriveIOInputs {
@@ -18,6 +20,9 @@ public interface DriveIO {
 
   /** Run open loop at the specified voltage. */
   public default void setVoltage(double leftVolts, double rightVolts) {
+  }
+
+  public default void resetPose(Pose2d pose){
   }
 
 }

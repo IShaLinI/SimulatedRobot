@@ -124,9 +124,7 @@ public class MotionProfileCommand extends CommandBase {
     @Override
     public void execute() {
         State setpoint = trajectory.sample(timer.get());
-        Logger.getInstance().recordOutput("Odometry/ProfileSetpoint",
-                new double[] { setpoint.poseMeters.getX(), setpoint.poseMeters.getY(),
-                        setpoint.poseMeters.getRotation().getRadians() });
+        Logger.getInstance().recordOutput("Odometry/ProfileSetpoint", new double[] { setpoint.poseMeters.getX(), setpoint.poseMeters.getY(),setpoint.poseMeters.getRotation().getRadians() });
         ChassisSpeeds chassisSpeeds = controller.calculate(drive.getPose(), setpoint);
         DifferentialDriveWheelSpeeds wheelSpeeds = kinematics.toWheelSpeeds(chassisSpeeds);
         drive.driveVelocity(wheelSpeeds.leftMetersPerSecond, wheelSpeeds.rightMetersPerSecond);

@@ -27,10 +27,10 @@ public class Drive extends SubsystemBase {
     switch (Constants.currentMode) {
       case REAL:
       case REPLAY:
-        ffModel = new SimpleMotorFeedforward(0.1, 0.05);
+        ffModel = new SimpleMotorFeedforward(0,2.2195,0.32787);
         break;
       case SIM:
-        ffModel = new SimpleMotorFeedforward(0, 0.03);
+        ffModel = new SimpleMotorFeedforward(0, 2.2195,0.32787);
         break;
       default:
         ffModel = new SimpleMotorFeedforward(0.0, 0.0);
@@ -81,16 +81,17 @@ public class Drive extends SubsystemBase {
 
   /* Sets the robot pose to (0,0,0) */
   public void resetPose() {
-    odometry.resetPosition(new Pose2d(), new Rotation2d());
+    resetPose(new Pose2d(), new Rotation2d());
   }
 
   /* Moves the robot pose but doesnt touch angle */
   public void resetPose(Pose2d pose) {
-    odometry.resetPosition(pose, new Rotation2d(-inputs.gyroYawRad));
+    resetPose(pose, new Rotation2d(-inputs.gyroYawRad));
   }
 
   /* Sets the robot pose and angle */
   public void resetPose(Pose2d pose, Rotation2d rot) {
+    io.resetPose(pose);
     odometry.resetPosition(pose, rot);
   }
 
