@@ -23,7 +23,6 @@ import edu.wpi.first.math.trajectory.constraint.CentripetalAccelerationConstrain
 import edu.wpi.first.math.trajectory.constraint.DifferentialDriveVoltageConstraint;
 import edu.wpi.first.math.trajectory.constraint.TrajectoryConstraint;
 import edu.wpi.first.math.util.Units;
-import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants;
@@ -88,19 +87,15 @@ public class MotionProfileCommand extends CommandBase {
 
         // Set up trajectory configuration
         kinematics = new DifferentialDriveKinematics(drive.getTrackWidthMeters());
-        CentripetalAccelerationConstraint centripetalAccelerationConstraint = new CentripetalAccelerationConstraint(
-                maxCentripetalAccelerationMetersPerSec2);
-        TrajectoryConfig config = new TrajectoryConfig(maxVelocityMetersPerSec,
-                maxAccelerationMetersPerSec2).setKinematics(kinematics)
+        CentripetalAccelerationConstraint centripetalAccelerationConstraint = new CentripetalAccelerationConstraint(maxCentripetalAccelerationMetersPerSec2);
+        TrajectoryConfig config = new TrajectoryConfig(maxVelocityMetersPerSec, maxAccelerationMetersPerSec2).setKinematics(kinematics)
                 .addConstraint(centripetalAccelerationConstraint)
                 .addConstraints(constraints)
                 .setStartVelocity(startVelocityMetersPerSec)
                 .setEndVelocity(endVelocityMetersPerSec).setReversed(reversed);
         if (drive.getKa() != 0) {
             config.addConstraint(new DifferentialDriveVoltageConstraint(
-                    new SimpleMotorFeedforward(drive.getKs(), drive.getKv(),
-                            drive.getKa()),
-                    kinematics, maxVoltage));
+                    new SimpleMotorFeedforward(drive.getKs(), drive.getKv(), drive.getKa()), kinematics, maxVoltage));
         }
 
         // Generate trajectory

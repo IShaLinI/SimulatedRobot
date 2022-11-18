@@ -22,7 +22,7 @@ public class MotionProfileAuto extends SequentialCommandGroup {
         0, 
         List.of(
           new Pose2d(2, 2, new Rotation2d(0)),
-          new Pose2d(5, 5, new Rotation2d(90))
+          new Pose2d(7, 5, new Rotation2d(0))
         ), 
         0, 
         false

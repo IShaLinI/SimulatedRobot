@@ -30,7 +30,7 @@ public class Drive extends SubsystemBase {
         ffModel = new SimpleMotorFeedforward(0,2.2195,0.32787);
         break;
       case SIM:
-        ffModel = new SimpleMotorFeedforward(0, 2.2195,0.32787);
+        ffModel = new SimpleMotorFeedforward(0, 2.2195,0.3);
         break;
       default:
         ffModel = new SimpleMotorFeedforward(0.0, 0.0);
